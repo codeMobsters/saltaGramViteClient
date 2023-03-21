@@ -1,13 +1,14 @@
 export type Picture = {
     pictureId :number,
-    UploadedDate :Date,
-    Likes :number,
-    Description :string
+    uploadedDate :Date,
+    likes :number,
+    description :string,
+    url :string
 }
 
 export type Comment = {
-    CommentId :number,
-    CreatedAtDate :Date,
-    CommentText :string,
-    Name :string
+    commentId :number,
+    createdAtDate :Date,
+    commentText :string,
+    name :string
 }
