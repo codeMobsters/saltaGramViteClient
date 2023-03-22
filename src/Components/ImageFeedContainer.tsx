@@ -3,11 +3,15 @@ import HeaderPics from './HeaderPics';
 import ImageFeed from './ImageFeed';
 import "./ImageFeedContainer.css";
 
-const ImageFeedContainer = () => {
+export type ImageFeedContProps = {
+  searchTerm :string;
+}
+
+const ImageFeedContainer = (props :ImageFeedContProps) => {
   return (
     <Box className="ImageFeedContainerBox">
         <HeaderPics />
-        <ImageFeed />
+        <ImageFeed searchTerm={props.searchTerm}/>
     </Box>
   )
 }

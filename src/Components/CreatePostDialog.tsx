@@ -7,6 +7,7 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
+import "./CreatePostDialog.css";
 
 interface InstaNavBarProps {
   createDialogOpen: boolean;
@@ -14,16 +15,16 @@ interface InstaNavBarProps {
 }
 
 function CreatePostDialog(props: InstaNavBarProps) {
-  const [comment, setComment] = useState("");
+  const [description, setDescription] = useState("");
   const [currentImage, setCurrentImage] = useState<File>();
 
-  function handleClickOpen() {
-    props.setCreateDialogOpen(true);
-  }
+  // function handleClickOpen() {
+  //   props.setCreateDialogOpen(true);
+  // }
 
   function handleClose() {
     props.setCreateDialogOpen(false);
-    setComment("");
+    setDescription("");
   }
 
   function selectImage(event: React.ChangeEvent<HTMLInputElement>) {
@@ -37,7 +38,7 @@ function CreatePostDialog(props: InstaNavBarProps) {
       if (currentImage != undefined) {
         formData.append("formFile", currentImage);
       }
-      formData.append("comment", comment);
+      formData.append("description", description);
 
       const requestOptions = {
         method: "POST",
@@ -63,13 +64,13 @@ function CreatePostDialog(props: InstaNavBarProps) {
     <Dialog open={props.createDialogOpen} onClose={() => handleClose()}>
       <DialogTitle>Create new post</DialogTitle>
       <DialogContent>
-        <DialogContentText>Add picture and comment.</DialogContentText>
-        <input type="file" accept="image/*" onChange={selectImage} />
+        <DialogContentText marginBottom="10px">Add picture and comment.</DialogContentText>
+        <input className="createDialogFormInput" type="file" accept="image/*" onChange={selectImage} />
         <Textarea
-          label="Comment"
-          className="pr-5 font-sans"
-          onChange={e => setComment(e.target.value)}
-          value={comment}
+          placeholder="Description"
+          className="pr-5 font-sans createDialogFormInputTextArea"
+          onChange={e => setDescription(e.target.value)}
+          value={description}
         />
       </DialogContent>
       <DialogActions>

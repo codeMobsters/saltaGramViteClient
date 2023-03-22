@@ -3,10 +3,14 @@ import ImageFeedContainer from './ImageFeedContainer';
 import "./MainComponent.css";
 import UserBar from './UserBar';
 
-const MainComponent = () => {
+export type MainCompProps = {
+  searchTerm :string;
+};
+
+const MainComponent = (props :MainCompProps) => {
   return (
     <Box className="mainCompBox">
-        <ImageFeedContainer />
+        <ImageFeedContainer searchTerm={props.searchTerm}/>
         <UserBar />
     </Box>
   )

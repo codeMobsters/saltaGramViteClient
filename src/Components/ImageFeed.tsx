@@ -1,14 +1,19 @@
 import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Picture } from "../Types/Types";
 import "./ImageFeed.css";
 
 interface testPicture {
   url: string;
 }
 
-const ImageFeed = () => {
+export type ImageFeedProps = {
+  searchTerm :string;
+}
+
+const ImageFeed = (props :ImageFeedProps) => {
   const [pictures, setPictures] = useState<testPicture[]>();
+
+  // if searchTerm is not empty, there is a search happening -> useEffect
 
   async function getPictures() {
     try {
@@ -33,6 +38,7 @@ const ImageFeed = () => {
       {/* {pictures && pictures.map(pic => <img key={pic.pictureId} src={pic.url} alt={pic.description}/>)} */}
       {pictures &&
         pictures.map(pic => <img key={Math.random()} src={pic.url} />)}
+        {props.searchTerm && <p>{props.searchTerm}</p>}
     </Box>
   );
 };

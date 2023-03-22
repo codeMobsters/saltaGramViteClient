@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Link } from "@mui/material";
 import React from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
@@ -7,6 +7,7 @@ import "./InstaNavBar.css";
 
 interface InstaNavBarProps {
   setCreateDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setSearchDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function InstaNavBar(props: InstaNavBarProps) {
@@ -18,7 +19,7 @@ function InstaNavBar(props: InstaNavBarProps) {
           <HomeIcon color="primary" onClick={() => {}} />
           Home
         </li>
-        <li>
+        <li onClick={() => props.setSearchDialogOpen(true)}>
           <SearchIcon color="primary" onClick={() => {}} /> Search
         </li>
         <li onClick={() => props.setCreateDialogOpen(true)}>
