@@ -5,7 +5,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import "./InstaNavBar.css";
 
-const InstaNavBar = () => {
+interface InstaNavBarProps {
+  setCreateDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function InstaNavBar(props: InstaNavBarProps) {
   return (
     <Box className="instaNavBarBox">
       SaltaGram
@@ -17,12 +21,12 @@ const InstaNavBar = () => {
         <li>
           <SearchIcon color="primary" onClick={() => {}} /> Search
         </li>
-        <li>
-          <AddBoxOutlinedIcon color="primary" onClick={() => {}} /> Create
+        <li onClick={() => props.setCreateDialogOpen(true)}>
+          <AddBoxOutlinedIcon color="primary" /> Create
         </li>
       </ul>
     </Box>
   );
-};
+}
 
 export default InstaNavBar;

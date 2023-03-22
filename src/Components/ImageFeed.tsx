@@ -13,8 +13,8 @@ const ImageFeed = () => {
   async function getPictures() {
     try {
       const response = await fetch(
-        "https://codemobsterssaltagramapi.azurewebsites.net/api/Posts"
-        // "https://localhost:7201/api/Posts"
+        // "https://codemobsterssaltagramapi.azurewebsites.net/api/Posts"
+        "https://localhost:7201/api/Posts"
       );
       const json = await response.json();
       // console.log(json);
