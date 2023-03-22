@@ -1,6 +1,6 @@
-import { Box } from '@mui/material'
-import { useEffect, useState } from 'react';
-import { Picture } from '../Types/Types';
+import { Box } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Picture } from "../Types/Types";
 import "./ImageFeed.css";
 
 const ImageFeed = () => {
@@ -26,9 +26,10 @@ const ImageFeed = () => {
   return (
     <Box className="imageFeed">
       {/* {pictures && pictures.map(pic => <img key={pic.pictureId} src={pic.url} alt={pic.description}/>)} */}
-      {pictures && pictures.map(pic => <img key={Math.random()} src={pic.toString()} />)}
+      {pictures &&
+        pictures.map(pic => <img key={Math.random()} src={pic.toString()} />)}
     </Box>
-  )
-}
+  );
+};
 
-export default ImageFeed
+export default ImageFeed;
