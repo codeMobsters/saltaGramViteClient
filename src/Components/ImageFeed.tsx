@@ -3,16 +3,21 @@ import { useEffect, useState } from "react";
 import { Picture } from "../Types/Types";
 import "./ImageFeed.css";
 
+interface testPicture {
+  url: string;
+}
+
 const ImageFeed = () => {
-  const [pictures, setPictures] = useState<Picture[]>();
+  const [pictures, setPictures] = useState<testPicture[]>();
 
   async function getPictures() {
     try {
       const response = await fetch(
         "https://codemobsterssaltagramapi.azurewebsites.net/api/Posts"
+        // "https://localhost:7201/api/Posts"
       );
       const json = await response.json();
-      console.log(json);
+      // console.log(json);
       setPictures(json);
     } catch (e: any) {
       throw new Error(e);
@@ -27,7 +32,7 @@ const ImageFeed = () => {
     <Box className="imageFeed">
       {/* {pictures && pictures.map(pic => <img key={pic.pictureId} src={pic.url} alt={pic.description}/>)} */}
       {pictures &&
-        pictures.map(pic => <img key={Math.random()} src={pic.toString()} />)}
+        pictures.map(pic => <img key={Math.random()} src={pic.url} />)}
     </Box>
   );
 };
