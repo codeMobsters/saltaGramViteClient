@@ -1,3 +1,8 @@
 .imageFeed {
     height: 100%;
 }
+.imageFeed img {
+    max-width: 50vw;
+    display: block;
+    margin: 10px 0 10px 0;
+}
