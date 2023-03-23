@@ -12,6 +12,7 @@ import "./CreatePostDialog.css";
 interface InstaNavBarProps {
   createDialogOpen: boolean;
   setCreateDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  getPosts :() => void;
 }
 
 function CreatePostDialog(props: InstaNavBarProps) {
@@ -49,6 +50,7 @@ function CreatePostDialog(props: InstaNavBarProps) {
         `https://localhost:7201/api/Posts`,
         requestOptions
       );
+      props.getPosts();
       return response.ok;
     } catch (e: any) {
       throw new Error("Problems");

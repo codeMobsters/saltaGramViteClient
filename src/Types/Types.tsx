@@ -1,6 +1,6 @@
 export type Post = {
     postId :number,
-    Comments : Array<Comment> | null
+    comments : Array<Comment> | null
     uploadedAt :Date,
     likes :number,
     description :string,

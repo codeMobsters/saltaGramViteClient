@@ -8,6 +8,9 @@ import "./InstaNavBar.css";
 interface InstaNavBarProps {
   setCreateDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setSearchDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setScrollingToTop: React.Dispatch<React.SetStateAction<boolean>>;
+  scrollingToTop: boolean;
+  setSearchTerm :React.Dispatch<React.SetStateAction<string>>;
 }
 
 function InstaNavBar(props: InstaNavBarProps) {
@@ -15,8 +18,8 @@ function InstaNavBar(props: InstaNavBarProps) {
     <Box className="instaNavBarBox">
       SaltaGram
       <ul>
-        <li>
-          <HomeIcon color="primary" onClick={() => {}} />
+        <li onClick={() => {props.setScrollingToTop(!props.scrollingToTop); props.setSearchTerm("")}}>
+          <HomeIcon color="primary" />
           Home
         </li>
         <li onClick={() => props.setSearchDialogOpen(true)}>

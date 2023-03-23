@@ -1,8 +1,12 @@
 .imageFeed {
-    height: 100%;
+    height: 90vh;
+    overflow: scroll;
 }
 .imageFeed img {
     max-width: 50vw;
     display: block;
     margin: 10px 0 10px 0;
+}
+.imageFeed::-webkit-scrollbar {
+    display: none;
 }
