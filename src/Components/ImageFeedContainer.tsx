@@ -18,7 +18,11 @@ const ImageFeedContainer = (props :ImageFeedContProps) => {
 
   useEffect(() => {
     if(props.scrollingToTop != null && imageFeedRef?.current){
-      imageFeedRef.current.scrollTo(0, 0);
+      imageFeedRef.current.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
     }
   },[props.scrollingToTop])
 
