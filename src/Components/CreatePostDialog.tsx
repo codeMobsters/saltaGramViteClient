@@ -12,7 +12,7 @@ import "./CreatePostDialog.css";
 interface InstaNavBarProps {
   createDialogOpen: boolean;
   setCreateDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  getPosts :() => void;
+  getPosts: () => void;
 }
 
 function CreatePostDialog(props: InstaNavBarProps) {
@@ -47,7 +47,8 @@ function CreatePostDialog(props: InstaNavBarProps) {
         body: formData,
       };
       const response = await fetch(
-        `https://localhost:7201/api/Posts`,
+        "https://codemobsterssaltagramapi.azurewebsites.net/api/Posts",
+        // `https://localhost:7201/api/Posts`,
         requestOptions
       );
       props.getPosts();
@@ -66,8 +67,15 @@ function CreatePostDialog(props: InstaNavBarProps) {
     <Dialog open={props.createDialogOpen} onClose={() => handleClose()}>
       <DialogTitle>Create new post</DialogTitle>
       <DialogContent>
-        <DialogContentText marginBottom="10px">Add picture and comment.</DialogContentText>
-        <input className="createDialogFormInput" type="file" accept="image/*" onChange={selectImage} />
+        <DialogContentText marginBottom="10px">
+          Add picture and comment.
+        </DialogContentText>
+        <input
+          className="createDialogFormInput"
+          type="file"
+          accept="image/*"
+          onChange={selectImage}
+        />
         <Textarea
           placeholder="Description"
           className="pr-5 font-sans createDialogFormInputTextArea"

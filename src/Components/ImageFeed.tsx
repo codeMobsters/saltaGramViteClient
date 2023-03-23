@@ -1,29 +1,33 @@
-import { Box} from "@mui/material";
+import { Box } from "@mui/material";
 import { CommentAddREquest, Post } from "../Types/Types";
 import ImageCard from "./ImageCard";
 import "./ImageFeed.css";
 import React, { useEffect, useState } from "react";
 
 export type ImageFeedProps = {
-  searchTerm :string;
-  getPosts : () => void;
-  posts? :Post[];
-}
+  searchTerm: string;
+  getPosts: () => void;
+  posts?: Post[];
+};
 
-const ImageFeed = React.forwardRef((props :ImageFeedProps, ref) => {
+const ImageFeed = React.forwardRef((props: ImageFeedProps, ref) => {
   const [filteredPosts, setFilteredPosts] = useState<Post[]>();
 
-  async function AddComment (request :CommentAddREquest) {
+  async function AddComment(request: CommentAddREquest) {
     try {
       const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(request)
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(request),
       };
-      await fetch("https://localhost:7201/api/Comments", requestOptions);
+      await fetch(
+        "https://codemobsterssaltagramapi.azurewebsites.net/api/Comments",
+        // "https://localhost:7201/api/Comments",
+        requestOptions
+      );
       await props.getPosts();
-    } catch (e :any) {
-      throw new Error('Comment error');
+    } catch (e: any) {
+      throw new Error("Comment error");
     }
   }
 
@@ -32,8 +36,10 @@ const ImageFeed = React.forwardRef((props :ImageFeedProps, ref) => {
   }, [props.posts]);
 
   useEffect(() => {
-    if(props.searchTerm != "" && props.posts){
-      setFilteredPosts(props.posts.filter(x => x.description.indexOf(props.searchTerm) > -1))
+    if (props.searchTerm != "" && props.posts) {
+      setFilteredPosts(
+        props.posts.filter(x => x.description.indexOf(props.searchTerm) > -1)
+      );
     } else {
       setFilteredPosts(props.posts);
     }
@@ -41,7 +47,14 @@ const ImageFeed = React.forwardRef((props :ImageFeedProps, ref) => {
 
   return (
     <Box className="imageFeed" ref={ref}>
-      {filteredPosts && filteredPosts.map(post => <ImageCard key={post.postId} postData={post as Post} AddComment={AddComment}/>)}
+      {filteredPosts &&
+        filteredPosts.map(post => (
+          <ImageCard
+            key={post.postId}
+            postData={post as Post}
+            AddComment={AddComment}
+          />
+        ))}
     </Box>
   );
 });
