@@ -17,8 +17,8 @@ function App() {
   async function getPosts() {
     try {
       const response = await fetch(
-        // "https://codemobsterssaltagramapi.azurewebsites.net/api/Posts"
-        "https://localhost:7201/api/Posts"
+        "https://codemobsterssaltagramapi.azurewebsites.net/api/Posts"
+        // "https://localhost:7201/api/Posts"
       );
       const json = await response.json();
       console.log(json);
@@ -34,21 +34,21 @@ function App() {
 
   return (
     <Box className="App">
-      <InstaNavBar 
-        setCreateDialogOpen={setCreateDialogOpen} 
-        setSearchDialogOpen={setSearchDialogOpen} 
-        scrollingToTop={scrollingToTop} 
+      <InstaNavBar
+        setCreateDialogOpen={setCreateDialogOpen}
+        setSearchDialogOpen={setSearchDialogOpen}
+        scrollingToTop={scrollingToTop}
         setScrollingToTop={setScrollingToTop}
         setSearchTerm={setSearchTerm}
       />
-      <MainComponent 
-        searchTerm={searchTerm} 
-        posts={posts?.sort((a, b) => b.postId - a.postId)} 
-        getPosts={getPosts} 
+      <MainComponent
+        searchTerm={searchTerm}
+        posts={posts?.sort((a, b) => b.postId - a.postId)}
+        getPosts={getPosts}
         scrollingToTop={scrollingToTop}
       />
       <SearchDialog
-        scrollingToTop={scrollingToTop} 
+        scrollingToTop={scrollingToTop}
         setScrollingToTop={setScrollingToTop}
         searchDialogOpen={searchDialogOpen}
         setSearchDialogOpen={setSearchDialogOpen}
