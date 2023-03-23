@@ -12,7 +12,6 @@ export type ImageFeedProps = {
 
 const ImageFeed = React.forwardRef((props :ImageFeedProps, ref) => {
   const [filteredPosts, setFilteredPosts] = useState<Post[]>();
-  // if searchTerm is not empty, there is a search happening -> useEffect
 
   async function AddComment (request :CommentAddREquest) {
     try {
@@ -30,7 +29,7 @@ const ImageFeed = React.forwardRef((props :ImageFeedProps, ref) => {
 
   useEffect(() => {
     setFilteredPosts(props.posts);
-  }, []);
+  }, [props.posts]);
 
   useEffect(() => {
     if(props.searchTerm != "" && props.posts){
@@ -43,7 +42,6 @@ const ImageFeed = React.forwardRef((props :ImageFeedProps, ref) => {
   return (
     <Box className="imageFeed" ref={ref}>
       {filteredPosts && filteredPosts.map(post => <ImageCard key={post.postId} postData={post as Post} AddComment={AddComment}/>)}
-        {props.searchTerm && <p>{props.searchTerm}</p>}
     </Box>
   );
 });
