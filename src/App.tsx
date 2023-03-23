@@ -48,6 +48,8 @@ function App() {
         scrollingToTop={scrollingToTop}
       />
       <SearchDialog
+        scrollingToTop={scrollingToTop} 
+        setScrollingToTop={setScrollingToTop}
         searchDialogOpen={searchDialogOpen}
         setSearchDialogOpen={setSearchDialogOpen}
         setSearchTerm={setSearchTerm}

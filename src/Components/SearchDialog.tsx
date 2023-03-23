@@ -13,6 +13,8 @@ interface SearchDialogProps {
     setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
     searchDialogOpen: boolean;
     setSearchDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    scrollingToTop: boolean;
+    setScrollingToTop :React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function SearchDialog(props: SearchDialogProps) {
@@ -26,6 +28,7 @@ function SearchDialog(props: SearchDialogProps) {
 
   function handlePost() {
     props.setSearchTerm(searchTermLocal);
+    props.setScrollingToTop(!props.scrollingToTop);
     props.setSearchDialogOpen(false);
   }
 
